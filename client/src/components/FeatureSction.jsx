@@ -3,9 +3,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import BlurCircle from './BlurCircle';
 import Moviecard from './Moviecard';
-import{ dummyShowsData} from "../assets/assets"
+import { useAppContext } from '../context/AppContext';
+
 const FeatureSction = () => {
     const navigate = useNavigate();
+   const {shows} = useAppContext();
+
+
   return (
     <div className='px-6 md:px-16 lg:px-24 xl:px-44 overflow-hidden'>
       
@@ -17,7 +21,7 @@ const FeatureSction = () => {
 
 
 <div className='flex flex-wrap max-sm:justify-center gap-8 mt-8'>
-  {dummyShowsData.slice(0,4).map((show)=>(
+  {shows.slice(0,4).map((show)=>(
     <Moviecard key={show._id} movie={show}/>
   ))}
 </div>

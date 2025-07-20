@@ -6,8 +6,9 @@ const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
 const sig = request.headers["stripe-signature"];
 
 let event;
+
 try {
-    event = stripeInstance.webhooks.constructEvent(request.body,sig,process.env.STRIPE_WEBHOOK_SECRET)
+ event = stripeInstance.webhooks.constructEvent(request.body ,sig , process.env.STRIPE_WEBHOOK_SECRET)
 } catch (error) {
     return response.status(400).send(`Webhook Error: ${error.message}`);
 }
@@ -21,15 +22,25 @@ try {
             })
 
             const session = sessionList.data[0];
-            const { bookingId } = session.metadata;
+            const {bookingId} = session.metadata;                  
+           
+           console.log("bookingId:", bookingId);
+            
 
-            await Booking.findByIdAndUpdate(bookingId,{
-                isPaid:true,
+      const result = await Booking.findByIdAndUpdate(bookingId,{
+              isPaid:true,
                 paymentLink:""
-            })
+            });
+
+            if (!result) {
+    console.log("No booking found for bookingId:", bookingId);
+    return response.status(404).send("Booking not found");
+  }
             break;
         }
-        default:console.log('Unhandled event type:',event.type);
+            
+        default:
+            console.log('Unhandled event type:',event.type);
         
     }
     response.json({received:true})
@@ -37,4 +48,5 @@ try {
     console.log("webhook processing error:",error);
     response.status(500).send("Internal Server Error")
 }
+
 }

@@ -83,10 +83,7 @@ const session = await stripeInstance.checkout.sessions.create({
 
 booking.paymentLink = session.url;
 await booking.save();
-
-
-
-   res.json({success:true,url:session.url})
+ res.json({success:true,url:session.url})
 
     } catch (error) {
         console.log(error.message);

@@ -10,17 +10,16 @@ import bookingRouter from "./routes/bookingRouter.js";
 import adminRouter from "./routes/adminRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import { stripeWebhooks } from "./controllers/stripeWebhooks.js";
-
+import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
 
   await connectDB();
 
-
-  // Stripe webhoook route
-
-  app.use("api/stripe",express.raw({type:'application/json'}),stripeWebhooks)
+ // Stripe webhoook route
+app.use("/api/stripe", express.raw({type:'application/json'}),stripeWebhooks)
+ 
 
 // Middleware
 app.use(express.json())
@@ -37,6 +36,8 @@ app.use("/api/show",showRouter);
 app.use("/api/booking",bookingRouter);
 app.use("/api/admin",adminRouter);
 app.use("/api/user",userRouter);
+
+
 
 app.listen(port,()=>{
     console.log('Server is listen on port',port);

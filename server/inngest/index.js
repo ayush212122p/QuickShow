@@ -4,7 +4,7 @@ import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id:"my-ticket-booking"});
+export  const inngest = new Inngest({ id:"my-ticket-booking"});
 
 // inngest fn to save user data to the database
 

@@ -21,21 +21,17 @@ try {
                 payment_intent:paymentIntent.id
             })
 
-            const session = sessionList.data[0];
+            const session = sessionList.data[0]
             const {bookingId} = session.metadata;                  
            
            console.log("bookingId:", bookingId);
             
 
-      const result = await Booking.findByIdAndUpdate(bookingId,{
+      await Booking.findByIdAndUpdate(bookingId,{
               isPaid:true,
                 paymentLink:""
-            });
+            })
 
-            if (!result) {
-    console.log("No booking found for bookingId:", bookingId);
-    return response.status(404).send("Booking not found");
-  }
             break;
         }
             

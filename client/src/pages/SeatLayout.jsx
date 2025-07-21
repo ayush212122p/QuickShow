@@ -83,7 +83,8 @@ const bookTickets = async ()=>{
     if(!selectedTime || !selectedSeats.length) return toast.error("Please select time and seats first");
 
     const {data} = await axios.post("/api/booking/create",{
-      showId:selectedTime.showId,selectedSeats},{headers:{Authorization:`Bearer ${ await getToken()}`}});
+      showId:selectedTime.showId,selectedSeats},
+      {headers:{Authorization:`Bearer ${ await getToken()}`}});
 
       if(data.success){
      window.location.href = data.url;

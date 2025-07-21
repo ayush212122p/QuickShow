@@ -1,7 +1,7 @@
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 import stripe from "stripe";
-
+import inngest from "inngest"
 // function to chexk availability of selected seats for a movie
 
 

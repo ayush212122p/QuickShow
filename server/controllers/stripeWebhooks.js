@@ -29,7 +29,7 @@ try {
 
       await Booking.findByIdAndUpdate(bookingId,{
               isPaid:true,
-                paymentLink:"",
+                paymentLink:""
             })
 
             break;

@@ -90,12 +90,12 @@ const releaseSeatsandDeleteBooking = inngest.createFunction(
 const sendBookingConfirmationEmail = inngest.createFunction(
     {id:"send-booking-confirmation-email"},
     {event:"app/show.booked"},
-    async ({event,step}) =>{
+    async ({event, step}) =>{
         const {bookingId} = event.data;
 
         const booking = await Booking.findById(bookingId).populate({
             path:"show",
-            populate:{path:"movie",model:"Movie"}
+            populate:{path:"movie",model:"Movie"},
         }).populate("user");
 
        await sendEmail({
@@ -113,7 +113,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
 </div>`
        })
 
-
+console.log(booking.user.email)
     }
 )
 

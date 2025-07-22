@@ -6,7 +6,6 @@ import sendEmail from "../configs/nodemailer.js";
 
 // Create a client to send and receive events
 export  const inngest = new Inngest({ id:"my-ticket-booking"});
-
 // inngest fn to save user data to the database
 
 const syncUserCreation = inngest.createFunction(
@@ -100,7 +99,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
         }).populate("user");
 
        await sendEmail({
-        to:booking.user.email,
+        to:booking.email,
         subject:`Payment Confirmation: "${booking.show.movie.title}" booked!`,
         body: `<div style="font-family: Arial,sans-serif; line-height: 1.5;">
    <h2>Hi ${booking.user.name},</h2>

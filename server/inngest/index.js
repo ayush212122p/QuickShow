@@ -104,7 +104,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
         subject:`Payment Confirmation: "${booking.show.movie.title}" booked!`,
         body:` <div style="font-family: Arial,sans-serif; line-height: 1.5;">
    <h2>Hi ${booking.user.name},</h2>
-   <p>Your booking for <strong style="color:#F84565;">"${booking.show.movie.title}"</strong> is confirmed</p>
+   <p>Your booking for <strong style="color:#F84565;">"${booking.show.movie.title}"</strong> is confirmed.</p>
     <p>
   <strong>Date:</strong> ${new Date(booking.show.showDateTime).toLocalDateString('en-US',{ timeZone:'Asia/Kolkata'})} <br/>
   <strong>Time:</strong> ${new Date(booking.show.showDateTime).toLocalTimeString('en-US',{ timeZone:'Asia/Kolkata'})} <br/>

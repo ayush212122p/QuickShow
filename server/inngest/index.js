@@ -113,7 +113,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
 </div>`
        })
 
-console.log(booking.user.email)
+
     }
 )
 

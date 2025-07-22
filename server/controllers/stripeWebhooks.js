@@ -25,10 +25,7 @@ try {
             const session = sessionList.data[0]
             const {bookingId} = session.metadata;                  
            
-           console.log("bookingId:", bookingId);
-            
-
-      await Booking.findByIdAndUpdate(bookingId,{
+            await Booking.findByIdAndUpdate(bookingId,{
               isPaid:true,
                 paymentLink:""
             })

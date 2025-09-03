@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import {dummyTrailers } from '../assets/assets'
  import ReactPlayer from "react-player"
-import BlurCircle from './BlurCircle'
+import BlurCircle from '../components/BlurCircle'
 import { PlayCircleIcon } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-    
 
-const TrailerSection = () => {
-const navigate = useNavigate();
-
+const Trailer = () => {
     const [currentTrailer,setCurrentTrailer]= useState(dummyTrailers[0])
   return (
     <div className='px-6 md:px-16 lg:px-24 xl:px-44 py-20 overflow-hidden'>
@@ -18,20 +14,19 @@ const navigate = useNavigate();
     <BlurCircle top='-100px' right='-100px'/>
 
 <ReactPlayer src={currentTrailer.videoUrl} controls={true} 
-
 className="mx-auto max-w-full" width="960px" height="540px"/>
 </div>
 <div className='group grid grid-cols-4 gap-4 md:gap-8 mt-8 max-w-3xl mx-auto'>
-</div>
+{dummyTrailers.map((trailer)=>(
+    <div key={trailer.image} className='relative group-hover:not-hover:opacity-50 hover:-translate-y-1 duration-300 transition max-md:h-60 cursor-pointer' onClick={()=>setCurrentTrailer(trailer)}>
 
-<div className='flex justify-center mt-5'>
-<button onClick={()=>{navigate("/trailer"); scrollTo(0,0)}} className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer'>See more</button>
+<img src={trailer.image} alt="trailer" className='rounded-lg w-full h-full object-cover brightness-75' />
+<PlayCircleIcon strokeWidth={1.6} className='absolute top-1/2 left-1/2 w-5 md:h-5 w-8 md:h-12 transform -translate-x-1/2 -translate-y-1/2'/>
+    </div>
+))}
 </div>
-    {/* </div> */}
 </div>
-
   )
-  
 }
 
-export default TrailerSection;
+export default Trailer;

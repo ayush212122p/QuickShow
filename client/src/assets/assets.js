@@ -31,6 +31,7 @@ export const dummyTrailers = [
         image: "https://img.youtube.com/vi/umiKiW4En9g/maxresdefault.jpg",
         videoUrl: 'https://www.youtube.com/watch?v=umiKiW4En9g'
     },
+    
 ]
 
 const dummyCastsData = [

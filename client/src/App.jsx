@@ -3,7 +3,9 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home.jsx'
+
 import Movie from './pages/Movie.jsx'
+import Trailer from './pages/Trailer.jsx'
 import MovieDetails from './pages/MovieDetails.jsx'
 import SeatLayout from './pages/SeatLayout.jsx'
 import MyBookings from './pages/MyBookings.jsx'
@@ -33,6 +35,7 @@ function App() {
 <Route path='/movies/:id/:date' element={<SeatLayout/>}/>
 <Route path='/my-bookings' element={<MyBookings/>}/>
 <Route path='/loading/:nextUrl' element={<Loading/>}/>
+<Route path='/trailer' element={<Trailer/>}/>
 
 <Route path='/favorite' element={<Favorite/>}/>
 <Route path='/admin/*' element={user ? <Layout/> : (
